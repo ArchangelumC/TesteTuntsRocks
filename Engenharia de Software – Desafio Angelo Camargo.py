@@ -1,20 +1,20 @@
 import pandas as pd
 
-# Leitura dos dados da planilha
-caminho_planilha = 'Desafio.xlsx'
-dados = pd.read_excel(caminho_planilha)
+# Reading of sheet data
+sheet_location = 'Desafio.xlsx'
+dados = pd.read_excel(sheet_location)
 
-# Cálculo da média e verificação de aprovação para cada aluno
+# Operation to verify the approval situation for each student
 for indice, linha in dados.iterrows():
     faltas = linha['Faltas']
-    nome = linha['Aluno']
+    Aluno = linha['Aluno']
     P1 = linha['P1']
     P2 = linha['P2']
     P3 = linha['P3']
 
     media = (P1 + P2 + P3) / 3
-
-    if faltas > 15:
+#Operation to fill up the sheets with the results and situations
+    if faltas > 15: #Coresponds at 25% of the Total number of Classes
         dados.at[indice, 'Situação'] = "Reprovado por Falta"
         dados.at[indice, 'Nota para Aprovação Final'] = 0
     elif media >= 70:
@@ -22,13 +22,9 @@ for indice, linha in dados.iterrows():
         dados.at[indice, 'Nota para Aprovação Final'] = 0
     elif media >= 50 and media <70:
         dados.at[indice, 'Situação'] = "Exame Final"
-        dados.at[indice, 'Nota para Aprovação Final'] = round(100 - media,2) #It cames from the equation 5 <= (m + naf)/2
+        dados.at[indice, 'Nota para Aprovação Final'] = round(100 - media,2) #It cames from the equation 50 <= (Media + Nota para Aprovação Final)/2
     else:
         dados.at[indice, 'Situação'] = "Reprovado"
         dados.at[indice, 'Nota para Aprovação Final'] = 0
 
-
-
-    print(f"Aluno: {nome} - Média: {media:.2f} - Situação: {linha['Situação']} - Nota para Aprovação Final:{linha['Nota para Aprovação Final']}")
-
-dados.to_excel('Novo.xlsx', index=False)
+dados.to_excel('Desafio.xlsx', index=False)

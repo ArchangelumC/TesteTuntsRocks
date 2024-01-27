@@ -22,9 +22,9 @@ for indice, linha in dados.iterrows():
         dados.at[indice, 'Nota para Aprovação Final'] = 0
     elif media >= 50 and media <70:
         dados.at[indice, 'Situação'] = "Exame Final"
-        dados.at[indice, 'Nota para Aprovação Final'] = round(100 - media,2) #It cames from the equation 50 <= (Media + Nota para Aprovação Final)/2
+        dados.at[indice, 'Nota para Aprovação Final'] = round(100 - media) #It cames from the equation 50 <= (Media + Nota para Aprovação Final)/2
     else:
-        dados.at[indice, 'Situação'] = "Reprovado"
+        dados.at[indice, 'Situação'] = "Reprovado por Nota"
         dados.at[indice, 'Nota para Aprovação Final'] = 0
 
 dados.to_excel('Desafio.xlsx', index=False)

@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Reading of sheet data
-sheet_location = 'Desafio.xlsx'#https://docs.google.com/spreadsheets/d/12RpmtrCdXpxcwh6-ROoUw7GhfKo1235ZJF084d9iVAM/edit?usp=sharing
+sheet_location = 'Desafio.xlsx'#https://docs.google.com/spreadsheets/d/12RpmtrCdXpxcwh6-ROoUw7GhfKo1235ZJF084d9iVAM/edit#gid=800279462
 dados = pd.read_excel(sheet_location)
 
 # Operation to verify the approval situation for each student

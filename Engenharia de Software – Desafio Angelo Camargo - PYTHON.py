@@ -26,5 +26,5 @@ for indice, linha in dados.iterrows():
     else:
         dados.at[indice, 'Situação'] = "Reprovado por Nota"
         dados.at[indice, 'Nota para Aprovação Final'] = 0
-
+#Saves the DataFrame in the sheet
 dados.to_excel('Desafio.xlsx', index=False)
